@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+
 # node-react-ecommerce
-node-react-ecommerce
-=======
+
+# node-react-ecommerce
+
 # React & Node Tutorial - Full ECommerce in 5 Hours [2020]
 
 Welcome to my React and Node tutorial to build a fully-functional e-commerce website in 5 hours. Open your code editor and follow me for the next hours to build an e-commerce website using React and Node.JS.
@@ -300,4 +303,7 @@ node-react-ecommerce/
 ├── .gitignore # Git 忽略文件
 ├── README.md # 项目说明文档
 └── package.json # 根目录下的依赖配置文件
->>>>>>> a70b069 (init project)
+
+# node-react-ecommerce
+
+node-react-ecommerce
