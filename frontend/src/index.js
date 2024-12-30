@@ -10,7 +10,7 @@ import store from "./store";
     作用：将 store 提供给 React 组件树。
     解析：Provider 是 react-redux 提供的高阶组件，它接受一个 store 属性，将 Redux store 作为上下文传递给组件树的每个子组件。任何嵌套的组件都可以通过 connect 或 useSelector 等方法访问 store 中的状态。
     例如，store 中的状态可以在任何子组件中使用 useSelector 来访问，或者通过 connect 将状态传递给组件。
-
+    
     ReactDOM.render 的第二个参数是一个 DOM 元素，用于指定将 React 组件渲染到页面中的哪个地方。在这个例子中，React 会将整个应用渲染到 index.html 文件中的 div 元素上，通常是这样的结构：
 */
 ReactDOM.render(

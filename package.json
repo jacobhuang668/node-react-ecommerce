@@ -1,5 +1,6 @@
 {
   "name": "amazona",
+  "type": "module",
   "version": "1.0.0",
   "description": "Demo : https://amazonaapp.herokuapp.com/",
   "main": "index.js",

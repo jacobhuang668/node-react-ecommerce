@@ -3,12 +3,23 @@ import path from "path";
 import mongoose from "mongoose";
 //用来解析 HTTP 请求体（body）
 import bodyParser from "body-parser";
-import config from "./config";
-import userRoute from "./routes/userRoute";
-import productRoute from "./routes/productRoute";
-import orderRoute from "./routes/orderRoute";
-import uploadRoute from "./routes/uploadRoute";
-//import cors from "cors";
+
+import config from "./config.js";
+import userRoute from "./routes/userRoute.js";
+import productRoute from "./routes/productRoute.js";
+import orderRoute from "./routes/orderRoute.js";
+import uploadRoute from "./routes/uploadRoute.js";
+import { fileURLToPath } from "url";
+/**
+ *  这段代码的作用是：
+
+    使用 import.meta.url 获取当前模块的 URL。
+    使用 fileURLToPath 将 URL 转换为文件路径。
+    使用 path.dirname() 获取该文件的目录路径。
+ */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const mongodbUrl = config.MONGODB_URL;
 mongoose
   .connect(mongodbUrl, {
@@ -41,14 +52,7 @@ app.use(express.static(path.join(__dirname, "/../frontend/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
 });
-// 启用 CORS，允许来自 localhost:3000 的请求
-// app.use(
-//   cors({
-//     origin: "http://localhost:3000", // 前端的地址
-//     methods: "GET,POST", // 允许的 HTTP 方法
-//     credentials: true, // 如果需要发送 cookies 或授权头
-//   })
-// );
+//export NODE_OPTIONS=--openssl-legacy-provider
 app.listen(config.PORT, () => {
   console.log("Server started at http://localhost:6000");
 });
