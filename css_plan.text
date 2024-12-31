@@ -1,0 +1,12 @@
+ 系统学习 CSS 布局
+CSS 布局是前端开发中至关重要的技能，掌握常见的布局方式可以让你轻松地实现复杂的设计。
+
+Flexbox：这是 CSS 中用于一维布局（横向或纵向）的强大工具。它简单且功能强大，特别适合用来做响应式布局。
+
+学习 display: flex、justify-content、align-items 等属性。
+Grid Layout：这是 CSS 中用于二维布局（同时控制行和列）的现代布局方式。它在复杂布局中非常有用。
+
+学习 display: grid、grid-template-columns、grid-template-rows、grid-gap 等属性。
+Positioning：了解 position 属性（static, relative, absolute, fixed, sticky）如何影响元素的定位。
+
+Responsive Design：学习如何通过媒体查询（@media）来为不同屏幕尺寸设计响应式布局。
