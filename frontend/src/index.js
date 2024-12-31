@@ -12,6 +12,8 @@ import store from "./store";
     例如，store 中的状态可以在任何子组件中使用 useSelector 来访问，或者通过 connect 将状态传递给组件。
     
     ReactDOM.render 的第二个参数是一个 DOM 元素，用于指定将 React 组件渲染到页面中的哪个地方。在这个例子中，React 会将整个应用渲染到 index.html 文件中的 div 元素上，通常是这样的结构：
+
+    通过将 store 传递给 Provider，React 应用中的所有子组件就能够访问到 Redux store。例如，你可以在 App 组件或者其子组件中使用 useSelector 来获取 Redux store 中的数据，或者通过 useDispatch 派发 action 来更新 Redux store 中的状态
 */
 ReactDOM.render(
   <Provider store={store}>
