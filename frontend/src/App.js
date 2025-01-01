@@ -15,10 +15,13 @@ import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import OrdersScreen from "./screens/OrdersScreen";
-
+//export NODE_OPTIONS=--openssl-legacy-provider
 function App() {
   //在传递给useSelector的函数中，你通过访问state.userSignin来选择你感兴趣的数据。这意味着你的Redux store的状态对象应该有一个userSignin属性，它可能包含了与用户登录相关的信息，比如用户的登录状态、用户信息或者登录过程中产生的任何错误信息。
-  const userSignin = useSelector((state) => state.userSignin);
+  const userSignin = useSelector((state) => {
+    console.log("state", state);
+    return state.userSignin;
+  });
   const { userInfo } = userSignin;
 
   const openMenu = () => {

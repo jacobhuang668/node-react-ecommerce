@@ -12,7 +12,23 @@ import { signin } from "../actions/userActions";
 function SigninScreen(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  /**
+     useSelector 是 Redux 的一个 Hook，用于访问 Redux 全局状态。
+     它接收一个函数作为参数，该函数的参数是 Redux 的完整状态对象 state。
+     state 是 Redux 中的整个状态对象（一个全局 JavaScript 对象）。
+     state.userSignin 是 Redux 状态中的某个特定部分，通常与登录状态或用户信息有关。
+
+   */
   const userSignin = useSelector((state) => state.userSignin);
+  /**
+   * 假设你的 Redux 状态对象是这样的：
+   * const state = {
+        userSignin: { userInfo: { name: "John", email: "john@example.com" }, loading: false, error: null },
+        cart: { items: [], totalPrice: 0 },
+     };
+   * 
+   * 
+   */
   const { loading, userInfo, error } = userSignin;
   //这是通过 useDispatch 获取的函数。你可以通过 dispatch 函数将 actions 派发给 Redux store，以改变状态。
   const dispatch = useDispatch();

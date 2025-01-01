@@ -1,5 +1,6 @@
 import Axios from "axios";
 import Cookie from "js-cookie";
+//import { configureStore } from "@reduxjs/toolkit";
 import {
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
@@ -44,6 +45,7 @@ const signin = (email, password) => async (dispatch) => {
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } });
   try {
     const { data } = await Axios.post("/api/users/signin", { email, password });
+    //在 Redux 中的作用是 触发一个 action，这个 action 会被传递给 Redux 的 reducer 来更新 store 中的状态。
     dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
     Cookie.set("userInfo", JSON.stringify(data));
   } catch (error) {
