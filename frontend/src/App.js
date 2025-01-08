@@ -90,6 +90,34 @@ function App() {
             <Route path="/shipping" component={ShippingScreen} />
             <Route path="/payment" component={PaymentScreen} />
             <Route path="/placeorder" component={PlaceOrderScreen} />
+            {/**
+              * 浏览器访问 /signin 路径时被渲染，React Router 会自动传递 history、location 和 match 这些与路由相关的 props 给 SigninScreen 组件。
+                history：用于程序化导航，跳转页面。
+                location：描述当前 URL 的信息。
+                match：匹配到当前路径的参数。
+                history
+                类型：object
+                用途：history 用于管理路由历史，提供了跳转和导航的方法，例如 push、replace 和 goBack。
+                常用方法：
+                history.push('/path'): 导航到新的路径。
+                history.replace('/path'): 用新的路径替换当前历史条目。
+                history.goBack(): 返回到上一个页面。
+                location
+                类型：object
+                用途：location 描述了当前的 URL 信息，包括路径 (pathname)、查询字符串 (search)、哈希值 (hash) 等。
+                属性：
+                pathname: 当前路径，例如 /signin。
+                search: 查询字符串部分，例如 ?query=abc。
+                hash: 哈希值，通常用于锚点导航。
+                match
+                类型：object
+                用途：match 用于匹配当前 URL 和路由路径的匹配结果。
+                属性：
+                params: 路径参数（例如 /product/:id 中的 id）。
+                isExact: 如果路径完全匹配，则为 true。
+                path: 路由路径模板。
+                url: 当前匹配的 URL。
+              */}
             <Route path="/signin" component={SigninScreen} />
             <Route path="/register" component={RegisterScreen} />
             <Route path="/product/:id" component={ProductScreen} />

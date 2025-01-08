@@ -8,7 +8,10 @@ import { Link } from "react-router-dom";
  */
 import { useSelector, useDispatch } from "react-redux";
 import { signin } from "../actions/userActions";
-
+/**
+  props 如何传递到 SigninScreen？
+  props 是由 React 自动传递给组件的，特别是当组件被作为一个 Route 渲染时。对于 SigninScreen，如果它是由 Route 渲染的，React Router 会自动传递 props，其中包括 history（路由跳转相关的对象）。
+ */
 function SigninScreen(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +20,7 @@ function SigninScreen(props) {
      它接收一个函数作为参数，该函数的参数是 Redux 的完整状态对象 state。
      state 是 Redux 中的整个状态对象（一个全局 JavaScript 对象）。
      state.userSignin 是 Redux 状态中的某个特定部分，通常与登录状态或用户信息有关。
-
+     userSignin 是从 Redux store 中提取的状态，它可能包含用户信息（userInfo）以及加载和错误状态（loading 和 error）。
    */
   const userSignin = useSelector((state) => state.userSignin);
   /**

@@ -8,10 +8,14 @@
             "name": "Launch Program",
             "program": "${workspaceFolder}/backend/server.js",
             "request": "launch",
+            "type": "node",
+            "runtimeExecutable": "node",
+            "runtimeArgs": [
+                "--inspect-brk=9229"  // 启用调试，挂起代码执行，等待调试器连接
+            ],
             "skipFiles": [
                 "<node_internals>/**"
-            ],
-            "type": "node"
+            ]
         },
         
         {
