@@ -87,6 +87,7 @@ router.delete("/:id", isAuth, isAdmin, async (req, res) => {
 });
 
 router.post("/", isAuth, isAdmin, async (req, res) => {
+  console.log("Request received for:", req.url);
   const product = new Product({
     name: req.body.name,
     price: req.body.price,

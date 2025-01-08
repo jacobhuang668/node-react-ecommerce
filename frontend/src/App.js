@@ -126,6 +126,13 @@ function App() {
                 :id可以是任何字符串，比如“Pants”、“Shirts”
             */}
             <Route path="/category/:id" component={HomeScreen} />
+            {/*
+              exact={true}
+                exact 属性表示该路由是否应该精确匹配路径。
+                当 exact={true} 时，只有当 URL 完全匹配 path="/" 时，才会渲染 HomeScreen 组件。
+                如果 exact 没有设置或是 false（这是默认行为），那么 / 路径就会与任何以 / 开头的路径匹配。也就是说，如果你访问 /about 或 /contact，这些路径也会匹配到该路由。
+                使用 exact={true} 可以确保只有访问根路径 / 时，才渲染 HomeScreen 组件，避免更深层的路径（如 /about）也错误地匹配到这个路由。            
+            */}
             <Route path="/" exact={true} component={HomeScreen} />
           </div>
         </main>
