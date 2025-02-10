@@ -21,8 +21,10 @@ import Axios from "axios";
 const listProducts =
   (category = "", searchKeyword = "", sortOrder = "") =>
   async (dispatch) => {
+    //dispatch 是 Redux 用来触发 action 的函数，它的作用是通知 reducer 更新 state。
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
+      //await axios.get(...) 会 暂停函数执行，直到 axios.get 返回的 Promise 完成（请求成功或失败）。
       const { data } = await axios.get(
         "/api/products?category=" +
           category +
@@ -128,3 +130,25 @@ export {
   deleteProdcut,
   saveProductReview,
 };
+
+/**
+ * 
+ const myDispatch = (fn) => {
+  fn(myDispatch); // 这里把 `myDispatch` 作为参数传递
+};
+
+const myAsyncAction = async (dispatch) => {
+  console.log("dispatch 是:", dispatch);
+};
+
+myDispatch(myAsyncAction);
+执行 myDispatch(myAsyncAction) 时：
+
+myAsyncAction(dispatch) 里的 dispatch 就是 myDispatch 传进去的 dispatch。
+最终 console.log 打印的是 myDispatch，即 Redux 里的 dispatch。
+
+async (dispatch) => { console.log("dispatch 是:", dispatch); }(myDispatch);
+
+
+
+ */

@@ -47,6 +47,14 @@ function SigninScreen(props) {
     : "/";
   useEffect(() => {
     //通过检查 userInfo，确保只有已登录的用户才能访问特定页面。
+    console.log(
+      "userInfo",
+      userInfo,
+      "url",
+      props.location.search,
+      "redirect",
+      redirect
+    );
     if (userInfo) {
       /**
        * props.history.push(redirect)：这是一个使用 React Router 的方法，用来将用户重定向到新的路径。history.push 方法会将新的路由添加到浏览器的历史记录中，并触发页面导航。
@@ -55,6 +63,7 @@ function SigninScreen(props) {
        * 
        */
       props.history.push(redirect);
+      console.log("userInfo", userInfo, "redirect", redirect);
     }
     return () => {
       //

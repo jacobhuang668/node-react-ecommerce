@@ -12,6 +12,7 @@ function HomeScreen(props) {
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
+  console.log("@@@@@@@@@@");
   useEffect(() => {
     dispatch(listProducts(category)); //发送action，会更新redux store信息对吗？
 
