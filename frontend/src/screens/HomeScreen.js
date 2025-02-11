@@ -4,15 +4,19 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { listProducts } from "../actions/productActions";
 import Rating from "../components/Rating";
-
+//这样你就能理解 props 是 React Router 自动传递的，不是你手动传递的。
 function HomeScreen(props) {
   const [searchKeyword, setSearchKeyword] = useState("");
   const [sortOrder, setSortOrder] = useState("");
   const category = props.match.params.id ? props.match.params.id : "";
+  //useSelector 是 react-redux 提供的一个 Hook，专门用于从 Redux store 里获取状态（state）。
+  //state 参数是什么？
+  //state 是 Redux store 中的 整个全局状态（即 store 里的所有数据）。
+  //这个 state 参数是由 useSelector 自动传递 的，你不需要手动传递它。
+  //你可以把 state 理解成 Redux store 里面的数据结构。
   const productList = useSelector((state) => state.productList);
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
-  console.log("@@@@@@@@@@");
   useEffect(() => {
     dispatch(listProducts(category)); //发送action，会更新redux store信息对吗？
 

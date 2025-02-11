@@ -20,11 +20,24 @@ import Axios from "axios";
 
 const listProducts =
   (category = "", searchKeyword = "", sortOrder = "") =>
+  //让 listProducts 可以执行异步逻辑（如 await axios.get(...)）。让你在异步代码中可以多次调用 dispatch()。async (dispatch) => {} 是 Redux Thunk 允许 action creator 处理异步逻辑的方式。
   async (dispatch) => {
     //dispatch 是 Redux 用来触发 action 的函数，它的作用是通知 reducer 更新 state。
     try {
       dispatch({ type: PRODUCT_LIST_REQUEST });
       //await axios.get(...) 会 暂停函数执行，直到 axios.get 返回的 Promise 完成（请求成功或失败）。
+      /* 
+      axios.get(url) 的返回值是一个 response 对象，通常包含多个属性，如：
+      {
+        data: { products: [...] }, // 这是我们需要的 API 返回数据
+        status: 200,
+        statusText: "OK",
+        headers: { ... },
+        config: { ... },
+        request: { ... }
+      }
+      const { data } 这行代码使用了解构赋值, 不能直接改成 const data，否则 data 会变成整个 response 对象，而不是 response.data。
+      */
       const { data } = await axios.get(
         "/api/products?category=" +
           category +
