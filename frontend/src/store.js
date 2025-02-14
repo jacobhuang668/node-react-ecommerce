@@ -72,7 +72,7 @@ const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
  * createStore 用来创建 Redux store。它接受三个参数：
    reducer：合并后的 reducer。
    initialState：初始状态。
-   applyMiddleware(thunk)：应用中间件，这里使用 redux-thunk，允许异步操作。
+   applyMiddleware(thunk)：应用中间件，这里使用 redux-thunk，允许dispatch异步操作。
    composeEnhancer：用于启用 Redux DevTools。
  * 
  * 

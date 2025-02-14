@@ -3,7 +3,7 @@ import Product from "../models/productModel.js";
 import { isAuth, isAdmin } from "../util.js";
 
 const router = express.Router();
-
+//http://localhost:3000/，请求目的地
 router.get("/", async (req, res) => {
   const category = req.query.category ? { category: req.query.category } : {};
   const searchKeyword = req.query.searchKeyword
