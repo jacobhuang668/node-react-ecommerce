@@ -10,7 +10,7 @@ router.get("/", async (req, res) => {
     ? {
         name: {
           $regex: req.query.searchKeyword,
-          $options: "i",
+          $options: "i", //$options: 'i' 表示 不区分大小写。
         },
       }
     : {};
@@ -19,6 +19,25 @@ router.get("/", async (req, res) => {
       ? { price: 1 }
       : { price: -1 }
     : { _id: -1 };
+  /**
+     *  const obj1 = { a: 1 };
+        const obj2 = { b: 2 };
+        const combined = { ...obj1, ...obj2 };
+        console.log(combined); // 输出：{ a: 1, b: 2 }
+        使用 ... 可以在 有值时添加条件，无值时忽略条件。
+        category = { category: 'electronics' }
+        searchKeyword = {
+          name: {
+            $regex: 'phone',
+            $options: 'i'
+          }
+        }
+        { ...category, ...searchKeyword }={category: 'electronics', name: {$regex: 'phone',$options: 'i'}}
+         当 category 和 searchKeyword 都为空 时：
+          Product.find({})
+          这等价于 查找所有商品。
+
+     */
   const products = await Product.find({ ...category, ...searchKeyword }).sort(
     sortOrder
   );
