@@ -7,6 +7,7 @@ const router = express.Router();
 router.put("/:id", isAuth, async (req, res) => {
   const userId = req.params.id;
   const user = await User.findById(userId);
+
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
@@ -29,7 +30,6 @@ router.post("/signin", async (req, res) => {
     email: req.body.email,
     password: req.body.password,
   });
-
   if (signinUser) {
     res.send({
       _id: signinUser.id,

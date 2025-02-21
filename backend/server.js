@@ -53,6 +53,6 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(`${__dirname}/../frontend/build/index.html`));
 });
 //export NODE_OPTIONS=--openssl-legacy-provider
-app.listen(config.PORT, () => {
-  console.log("Server started at http://localhost:6000");
+app.listen(config.PORT, "0.0.0.0", () => {
+  console.log(`Server started at http://localhost:${config.PORT}`);
 });

@@ -302,3 +302,6 @@ node-react-ecommerce/
 # node-react-ecommerce
 
 node-react-ecommerce
+
+debug 模式
+前端必须正常启动，后端不必
