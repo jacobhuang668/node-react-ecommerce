@@ -1,5 +1,15 @@
+/*
+在 CSS 中，rem（root em）是一个相对单位，表示相对于根元素（html）的字体大小。
+默认情况下，浏览器的 html font-size 是 16px，所以 1rem = 16px。
+然而，开发者有时希望将 1rem 设置为一个更容易计算的值（如 10px），因为以 10px 为基准可以更直观地使用 rem 进行尺寸计算（类似于以 10 为基数的度量单位）。
+通过设置 html { font-size: 62.5%; }，将根字体大小调整为 10px，这样：
+1rem = 10px
+2rem = 20px
+0.5rem = 5px
+这种方式让 rem 的值更接近十进制计算，方便开发者按比例设计和调整布局。
+*/
 html {
-  font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem */
+  font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem 。将 html 的字体大小设置为 10px */
   box-sizing: border-box;
 }
 body {
@@ -7,6 +17,9 @@ body {
   height: 100vh;
   margin: 0;
 }
+/*
+表示设置 <button> 元素中文字的大小
+*/
 button {
   font-size: 1.6rem;
 }
@@ -22,7 +35,10 @@ button {
     'header'
     'main'
     'footer';
+  /*1fr 表示一个等分单元（fraction unit），意思是网格只有一列，宽度会根据可用空间平均分配（这里是100%宽度，因为只有一个列）。*/
   grid-template-columns: 1fr;
+  /*高度为 1fr，表示剩余可用空间的等分*/
+  /*网格的高度会被分为固定的头部和底部（各5rem），以及一个可伸缩的主要内容区域（占据剩余空间）。*/
   grid-template-rows: 5rem 1fr 5rem;
   height: 100%;
 }
@@ -39,11 +55,11 @@ button {
   color: #ffffff;
   font-size: 3rem;
   font-weight: bold;
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 .header-links a {
   color: #ffffff;
-  text-decoration: none;
+  /* text-decoration: none; */
   padding: 1rem;
 }
 .header-links a:hover {
