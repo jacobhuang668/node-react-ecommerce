@@ -17,6 +17,9 @@ function HomeScreen(props) {
   const { products, loading, error } = productList;
   const dispatch = useDispatch();
   useEffect(() => {
+    //在 Redux 中，dispatch(action) 会将一个动作（action）分发到 Redux 存储（store）的所有 Reducer。
+    //每个 Reducer 是一个纯函数，接收当前状态（state）和动作（action），并根据 action.type 决定是否更新状态。
+    //action.type 决定了哪个 Reducer 会处理这个动作，并更新对应的状态部分（例如 state.productList 或 state.productReview）。
     dispatch(listProducts(category)); //发送action，会更新redux store信息对吗？
 
     return () => {
