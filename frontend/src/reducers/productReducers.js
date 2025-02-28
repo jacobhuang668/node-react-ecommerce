@@ -15,7 +15,7 @@ import {
   PRODUCT_REVIEW_SAVE_REQUEST,
   PRODUCT_REVIEW_SAVE_FAIL,
   PRODUCT_REVIEW_SAVE_RESET,
-} from '../constants/productConstants';
+} from "../constants/productConstants";
 
 function productListReducer(state = { products: [] }, action) {
   switch (action.type) {
