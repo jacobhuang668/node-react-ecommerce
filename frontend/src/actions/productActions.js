@@ -17,7 +17,8 @@ import {
 } from "../constants/productConstants";
 import axios from "axios";
 import Axios from "axios";
-
+//listProducts 是一个 Thunk 动作（使用 Redux Thunk），分发两个动作：
+//如果没有Axios调用外部api的话，Redux 的 dispatch 会在一个事件循环中收集所有动作（action），然后一次性调用 Reducer 更新状态，而不是立即触发多次渲染。
 const listProducts =
   (category = "", searchKeyword = "", sortOrder = "") =>
   //让 listProducts 可以执行异步逻辑（如 await axios.get(...)）。让你在异步代码中可以多次调用 dispatch()。async (dispatch) => {} 是 Redux Thunk 允许 action creator 处理异步逻辑的方式。
