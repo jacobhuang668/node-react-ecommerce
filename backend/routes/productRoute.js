@@ -19,6 +19,7 @@ router.get("/", async (req, res) => {
       ? { price: 1 }
       : { price: -1 }
     : { _id: -1 };
+  console.log("req.query.sortOrder,", req.query.sortOrder);
   /**
      *  const obj1 = { a: 1 };
         const obj2 = { b: 2 };

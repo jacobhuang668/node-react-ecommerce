@@ -20,31 +20,40 @@ function HomeScreen(props) {
     //在 Redux 中，dispatch(action) 会将一个动作（action）分发到 Redux 存储（store）的所有 Reducer。
     //每个 Reducer 是一个纯函数，接收当前状态（state）和动作（action），并根据 action.type 决定是否更新状态。
     //action.type 决定了哪个 Reducer 会处理这个动作，并更新对应的状态部分（例如 state.productList 或 state.productReview）。
-    dispatch(listProducts(category)); //发送action，会更新redux store信息对吗？不对，如下解释：
+    dispatch(listProducts(category, "", sortOrder)); //发送action，会更新redux store信息对吗？不对，如下解释：
     /*为什么没有直接传入 action 参数：因为 listProducts 是一个 Thunk action creator（异步函数），它返回一个函数，而不是一个动作对象。
     这个函数通过 dispatch 在内部分发多个带 type 的动作（如 'PRODUCT_LIST_REQUEST'、'PRODUCT_LIST_SUCCESS'、'PRODUCT_LIST_FAIL'），
     因此表面上看没有直接传入 action，但实际上动作是通过异步逻辑生成的。*/
 
     return () => {
-      //
+      //你可能认为 sortOrder 始终是旧值，但实际上 useEffect 回调中使用的是最新值。
+      //清理函数的打印只是反映了上一次的状态。
     };
-  }, [category]);
+  }, [category, sortOrder]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(listProducts(category, searchKeyword, sortOrder));
   };
+  /*
+    下面方法有问题：
+    一言以蔽之，<select> 的 onChange：无法通过useState获取最新的值！对吗？
+
+    一言以蔽之：是的，<select> 的 onChange 中无法通过 useState 直接获取最新的值，因为 setState 是异步的，状态更新未完成。
+    但更准确地说：onChange 中调用 setSortOrder 后，sortOrder 的值不会立即更新，需通过 e.target.value 或 useEffect 获取最新值。
+  */
   const sortHandler = (e) => {
     setSortOrder(e.target.value);
-    dispatch(listProducts(category, searchKeyword, sortOrder));
+    //更改源代码中的错误
+    //dispatch(listProducts(category, searchKeyword, sortOrder));
   };
 
   return (
     <>
       {category && <h2>{category}</h2>}
-
       <ul className="filter">
         <li>
+          {/*<form> 监听 onSubmit 事件，调用 submitHandler。 */}
           <form onSubmit={submitHandler}>
             <input
               name="searchKeyword"
@@ -55,7 +64,7 @@ function HomeScreen(props) {
         </li>
         <li>
           Sort By{" "}
-          <select name="sortOrder" onChange={sortHandler}>
+          <select value={sortOrder} onChange={sortHandler}>
             <option value="">Newest</option>
             <option value="lowest">Lowest</option>
             <option value="highest">Highest</option>

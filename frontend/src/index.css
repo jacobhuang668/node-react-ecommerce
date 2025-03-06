@@ -458,6 +458,12 @@ tbody > tr:nth-child(odd) {
   max-width: 45rem;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+}
+.filter li {
+  flex: 0 1 auto; /* 不增长、不收缩，自动宽度 */
+  max-width: 100%; /* 适配小屏幕 */
 }
 .filter input,
 .filter button,
