@@ -71,6 +71,14 @@ function HomeScreen(props) {
           </select>
         </li>
       </ul>
+      {/*
+      第一层条件：loading
+        如果 loading 为 true：渲染 <div>Loading</div>。
+        如果 loading 为 false：进入第二层条件。
+      第二层条件：error
+        如果 error 为真值（如字符串、对象）：渲染 <div>{error}</div>。
+        如果 error 为假值（如 null、undefined、false）：渲染 <ul></ul>。
+      */}
       {loading ? (
         <div>Loading...</div>
       ) : error ? (

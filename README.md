@@ -305,3 +305,30 @@ node-react-ecommerce
 
 debug 模式
 前端必须正常启动，后端不必
+
+server {
+listen 80;
+server_name localhost; # 替换为你的域名（如 example.com）
+
+    # 静态文件服务（处理 /uploads/* 请求）
+    location /uploads/ {
+        alias /path/to/node-react-ecommerce-master/uploads/; # 替换为 uploads 目录的绝对路径
+        autoindex off; # 禁止目录浏览
+    }
+
+    # 反向代理（处理 /api/* 请求）
+    location /api/ {
+        proxy_pass http://localhost:6000; # 转发到 Node.js 后端
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 前端静态文件（React 构建后的文件）
+    location / {
+        root /path/to/node-react-ecommerce-master/build; # 替换为 React 构建目录
+        try_files $uri $uri/ /index.html; # 支持 React 路由
+    }
+
+}

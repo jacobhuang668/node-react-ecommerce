@@ -16,6 +16,8 @@ body {
   font: 1.6rem Helvetica;
   height: 100vh;
   margin: 0;
+  /*remove scrollbars
+  overflow: hidden;*/
 }
 /*
 表示设置 <button> 元素中文字的大小
@@ -86,12 +88,25 @@ a:hover {
 .products {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-wrap: wrap;
 }
 .products li {
   list-style-type: none;
   padding: 0;
+  /*
+  flex 是以下三个属性的缩写：
+    flex-grow：弹性增长系数（子元素如何分配多余空间）。
+    flex-shrink：弹性收缩系数（子元素如何在空间不足时缩小）。
+    flex-basis：弹性基础尺寸（子元素的初始大小）。
+
+  flex: 0 1 34rem; 的效果：
+    这个元素的基础宽度是 34rem。
+    如果容器有剩余空间（大于所有子元素的 flex-basis 总和），它不会增长（flex-grow: 0）。
+    如果容器空间不足（小于所有子元素的 flex-basis 总和），它可以按比例缩小（flex-shrink: 1）。
+  直观解释：
+  这个元素固定在 34rem，除非空间不够，它才会缩小，但绝不会因为有多余空间而变大。
+  */
   flex: 0 1 34rem;
   margin: 1rem;
   height: 50rem;
