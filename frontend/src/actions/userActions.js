@@ -35,6 +35,7 @@ const update =
         }
       );
       dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
+      dispatch({ type: USER_SIGNIN_SUCCESS, payload: data });
       Cookie.set("userInfo", JSON.stringify(data));
     } catch (error) {
       dispatch({ type: USER_UPDATE_FAIL, payload: error.message });
